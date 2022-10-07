@@ -26,6 +26,11 @@ class Login extends React.Component {
     localStorage.setItem('token', token);
   };
 
+  clickManager = () => {
+    const { history } = this.props;
+    history.push('/settings');
+  };
+
   verifyBtn = () => {
     const { email, name } = this.state;
     const regex = /\S+@\S+\.\S+/;
@@ -72,6 +77,14 @@ class Login extends React.Component {
             disabled={ isBtnDisabled }
           >
             Play
+          </button>
+          <button
+            type="button"
+            data-testid="btn-settings"
+            onClick={ this.clickManager }
+          >
+            Configurações
+
           </button>
         </form>
       </div>
