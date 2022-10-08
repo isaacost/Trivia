@@ -14,7 +14,7 @@ class Login extends React.Component {
     this.setState({ [name]: value }, () => this.verifyBtn());
   };
 
-  fetchApi = async () => {
+  fetchAPI = async () => {
     const endPoint = 'https://opentdb.com/api_token.php?command=request';
     const data = await fetch(endPoint);
     const response = await data.json();
@@ -23,7 +23,7 @@ class Login extends React.Component {
 
   handleClick = async () => {
     const { history, dispatch } = this.props;
-    const token = await this.fetchApi();
+    const token = await this.fetchAPI();
     dispatch(addEmail(this.state));
     history.push('/game');
     localStorage.setItem('token', token);
