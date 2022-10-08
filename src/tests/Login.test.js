@@ -1,5 +1,5 @@
 import renderWithRouterAndRedux from './helpers/renderWithRouterAndRedux';
-import { findByTestId, findByText, screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 describe('testes da página de Login', () => {
@@ -29,7 +29,7 @@ describe('testes da página de Login', () => {
         expect(nameInput).toHaveValue('Athanes');
         expect(buttonPlay).toBeEnabled();
     })
-    it('verifica se ao clicar nos botões as rotas estão corretas', () => {
+    it('verifica se ao clicar nos botões as rotas estão corretas', async () => {
         const { history } = renderWithRouterAndRedux(<App />);
 
         const buttonPlay = screen.getByTestId('btn-play');
@@ -40,8 +40,7 @@ describe('testes da página de Login', () => {
         userEvent.type(nameInput, 'Athanes');
         userEvent.click(buttonPlay);
 
-        const { pathname } = history.location;
-        // expect(pathname).toBe('/game');
+        await waitFor(() => {expect(history.location.pathname).toBe('/game')})
 
     })
     it('verifica se a rota muda ao clicar no botão settings', () => {
