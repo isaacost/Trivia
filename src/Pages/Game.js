@@ -10,6 +10,7 @@ class Game extends React.Component {
     correctAnswer: '',
     answers: [],
     answered: false,
+    btnNext: false,
     index: 0,
   };
 
@@ -44,22 +45,31 @@ class Game extends React.Component {
   };
 
   handleClick = () => {
-    this.setState((previousSate) => ({
-      index: previousSate.index + 1,
+    const { index } = this.state;
+    const lengthIndex = 4;
+    if (index < lengthIndex) {
+      this.setState((previousSate) => ({
+        index: previousSate.index + 1,
+        answered: true,
+        btnNext: true,
+      }));
+    }
+    this.setState({
       answered: true,
-    }));
+    });
   };
 
   clickNext = () => {
-    const { index } = this.state;
-    console.log(index);
-    this.setState({ answered: false }, () => {
+    this.setState({
+      answered: false,
+      btnNext: false,
+    }, () => {
       this.respostasAPI();
     });
   };
 
   render() {
-    const { responseAPI, correctAnswer, answers, answered, index } = this.state;
+    const { responseAPI, correctAnswer, answers, answered, index, btnNext } = this.state;
     return (
       <div>
         <Header />
@@ -104,7 +114,7 @@ class Game extends React.Component {
           )
         }
         {
-          (answered)
+          (btnNext)
           && (
             <button
               type="button"
