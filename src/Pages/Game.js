@@ -10,6 +10,7 @@ class Game extends React.Component {
     correctAnswer: '',
     answers: [],
     answered: false,
+    index: 0,
   };
 
   componentDidMount() {
@@ -18,9 +19,10 @@ class Game extends React.Component {
 
   respostasAPI = () => {
     const number = 0.5;
-    const { responseAPI } = this.state;
-    const correctAnswer = responseAPI[0].correct_answer;
-    const incorrectAnswers = responseAPI[0].incorrect_answers;
+    const { responseAPI, index } = this.state;
+    console.log(responseAPI);
+    const correctAnswer = responseAPI[index].correct_answer;
+    const incorrectAnswers = responseAPI[index].incorrect_answers;
     const answers = [correctAnswer, ...incorrectAnswers]
       .sort(() => number - Math.random());
     this.setState({ answers, correctAnswer });
@@ -42,13 +44,22 @@ class Game extends React.Component {
   };
 
   handleClick = () => {
-    this.setState({
+    this.setState((previousSate) => ({
+      index: previousSate.index + 1,
       answered: true,
+    }));
+  };
+
+  clickNext = () => {
+    const { index } = this.state;
+    console.log(index);
+    this.setState({ answered: false }, () => {
+      this.respostasAPI();
     });
   };
 
   render() {
-    const { responseAPI, correctAnswer, answers, answered } = this.state;
+    const { responseAPI, correctAnswer, answers, answered, index } = this.state;
     return (
       <div>
         <Header />
@@ -56,8 +67,8 @@ class Game extends React.Component {
           responseAPI.length > 0
           && (
             <div>
-              <h3 data-testid="question-category">{responseAPI[0].category}</h3>
-              <p data-testid="question-text">{responseAPI[0].question}</p>
+              <h3 data-testid="question-category">{responseAPI[index].category}</h3>
+              <p data-testid="question-text">{responseAPI[index].question}</p>
               {
                 (answered)
                   ? (answers
@@ -90,6 +101,18 @@ class Game extends React.Component {
 
               }
             </div>
+          )
+        }
+        {
+          (answered)
+          && (
+            <button
+              type="button"
+              data-testid="btn-next"
+              onClick={ this.clickNext }
+            >
+              Next
+            </button>
           )
         }
 
