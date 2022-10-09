@@ -2,12 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import './game.css';
 
 class Game extends React.Component {
   state = {
     responseAPI: {},
     correctAnswer: '',
     answers: [],
+    answered: false,
   };
 
   componentDidMount() {
@@ -15,7 +17,7 @@ class Game extends React.Component {
   }
 
   respostasAPI = () => {
-    const number = 0.7;
+    const number = 0.5;
     const { responseAPI } = this.state;
     const correctAnswer = responseAPI[0].correct_answer;
     const incorrectAnswers = responseAPI[0].incorrect_answers;
@@ -39,8 +41,14 @@ class Game extends React.Component {
     });
   };
 
+  handleClick = () => {
+    this.setState({
+      answered: true,
+    });
+  };
+
   render() {
-    const { responseAPI, correctAnswer, answers } = this.state;
+    const { responseAPI, correctAnswer, answers, answered } = this.state;
     return (
       <div>
         <Header />
@@ -51,18 +59,35 @@ class Game extends React.Component {
               <h3 data-testid="question-category">{responseAPI[0].category}</h3>
               <p data-testid="question-text">{responseAPI[0].question}</p>
               {
-                answers
-                  .map((element, i) => (
-                    <div key={ i } data-testid="answer-options">
-                      <button
-                        data-testid={ correctAnswer === element
-                          ? 'correct-answer' : `wrong-answer-${i}` }
-                        type="button"
-                      >
-                        {element}
-                      </button>
-                    </div>
-                  ))
+                (answered)
+                  ? (answers
+                    .map((element, i) => (
+                      <div key={ i } data-testid="answer-options">
+                        <button
+                          data-testid={ correctAnswer === element
+                            ? 'correct-answer' : `wrong-answer-${i}` }
+                          type="button"
+                          className={ correctAnswer === element
+                            ? 'verde' : 'redText' }
+                        >
+                          {element}
+                        </button>
+                      </div>
+                    )))
+                  : (answers
+                    .map((element, i) => (
+                      <div key={ i } data-testid="answer-options">
+                        <button
+                          data-testid={ correctAnswer === element
+                            ? 'correct-answer' : `wrong-answer-${i}` }
+                          type="button"
+                          onClick={ this.handleClick }
+                        >
+                          {element}
+                        </button>
+                      </div>
+                    )))
+
               }
             </div>
           )
