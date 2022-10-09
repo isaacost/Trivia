@@ -45,21 +45,22 @@ class Game extends React.Component {
   };
 
   handleClick = () => {
-    const { index } = this.state;
-    const lengthIndex = 4;
-    if (index < lengthIndex) {
-      this.setState((previousSate) => ({
-        index: previousSate.index + 1,
-        answered: true,
-        btnNext: true,
-      }));
-    }
     this.setState({
       answered: true,
+      btnNext: true,
     });
   };
 
   clickNext = () => {
+    const { history } = this.props;
+    const { index } = this.state;
+    const lengthIndex = 4;
+    if (index === lengthIndex) {
+      history.push('/feedback');
+    }
+    this.setState((previousSate) => ({
+      index: previousSate.index + 1,
+    }));
     this.setState({
       answered: false,
       btnNext: false,
