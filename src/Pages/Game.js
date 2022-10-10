@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+
 import './game.css';
+import { addScore } from '../Redux/Action';
 
 class Game extends React.Component {
   state = {
@@ -14,6 +16,7 @@ class Game extends React.Component {
     index: 0,
     isDisabled: false,
     timer: 30,
+    score: 0,
   };
 
   componentDidMount() {
@@ -47,11 +50,35 @@ class Game extends React.Component {
     });
   };
 
-  handleClick = () => {
+  handleClick = ({ target }) => {
+    console.log(target.value);
     this.setState({
       answered: true,
       btnNext: true,
     });
+    const { responseAPI, index, timer, score } = this.state;
+    const { dispatch } = this.props;
+    const questionDifficulty = responseAPI[index].difficulty;
+    const rightAnswer = target.value;
+    console.log(questionDifficulty);
+    const scoreNumber = 10;
+    const scoreHard = 3;
+    const scoreMedium = 2;
+    const scoreEasy = 1;
+    if (questionDifficulty === 'hard' && rightAnswer === 'correct') {
+      this.setState((prev) => ({
+        score: prev.score + scoreNumber + (timer * scoreHard),
+      }));
+    } if (questionDifficulty === 'medium' && rightAnswer === 'correct') {
+      this.setState((prev) => ({
+        score: prev.score + scoreNumber + (timer * scoreMedium),
+      }));
+    } if (questionDifficulty === 'easy' && rightAnswer === 'correct') {
+      this.setState((prev) => ({
+        score: prev.score + scoreNumber + (timer * scoreEasy),
+      }));
+    }
+    dispatch(addScore(score));
   };
 
   clickNext = () => {
@@ -131,6 +158,8 @@ class Game extends React.Component {
                           type="button"
                           disabled={ isDisabled }
                           onClick={ this.handleClick }
+                          value={ correctAnswer === element
+                            ? 'correct' : `wrong-${i}` }
                         >
                           {element}
                         </button>
