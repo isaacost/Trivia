@@ -8,7 +8,6 @@ import { playAgain } from '../Redux/Action';
 class Feedback extends React.Component {
   handleClick = () => {
     const { history, dispatch } = this.props;
-    // const score = 0;
     dispatch(playAgain());
     history.push('/');
   };
@@ -19,10 +18,27 @@ class Feedback extends React.Component {
   };
 
   render() {
+    const { contador, score } = this.props;
+    const numeroAnalise = 3;
     return (
       <>
         <Header />
-        <h1 data-testid="feedback-text">Feedback</h1>
+        <h1>Feedback</h1>
+        {(contador >= numeroAnalise)
+          ? (<p data-testid="feedback-text">Well Done!</p>)
+          : (<p data-testid="feedback-text">Could be better...</p>)}
+        <p>
+          Número de acertos:
+          <span data-testid="feedback-total-question">
+            { contador }
+          </span>
+        </p>
+        <p>
+          Pontuação:
+          <span data-testid="feedback-total-score">
+            { score }
+          </span>
+        </p>
         <button
           type="button"
           data-testid="btn-play-again"
@@ -47,4 +63,9 @@ Feedback.propTypes = {
   push: PropTypes.func,
 }.isRequired;
 
-export default connect()(Feedback);
+const mapStateToProps = (state) => ({
+  contador: state.player.assertions,
+  score: state.player.score,
+});
+
+export default connect(mapStateToProps)(Feedback);

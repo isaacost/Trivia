@@ -7,9 +7,10 @@ export const addEmail = (payload) => ({
   payload,
 });
 
-export const addScore = (payload) => ({
+export const addScore = (score, contador) => ({
   type: ADD_SCORE,
-  payload,
+  score,
+  contador,
 });
 
 export const playAgain = () => ({

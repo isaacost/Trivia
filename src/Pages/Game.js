@@ -61,21 +61,25 @@ class Game extends React.Component {
     const rightAnswer = target.value;
     console.log(questionDifficulty);
     let score = 0;
+    let contador = 0;
     const scoreNumber = 10;
     const scoreHard = 3;
     const scoreMedium = 2;
     const scoreEasy = 1;
     if (questionDifficulty === 'hard' && rightAnswer === 'correct') {
       score = scoreNumber + (timer * scoreHard);
-      dispatch(addScore(score));
+      contador += 1;
+      dispatch(addScore(score, contador));
       return score;
     } if (questionDifficulty === 'medium' && rightAnswer === 'correct') {
       score = scoreNumber + (timer * scoreMedium);
-      dispatch(addScore(score));
+      contador += 1;
+      dispatch(addScore(score, contador));
       return score;
     } if (questionDifficulty === 'easy' && rightAnswer === 'correct') {
       score = scoreNumber + (timer * scoreEasy);
-      dispatch(addScore(score));
+      contador += 1;
+      dispatch(addScore(score, contador));
       return score;
     }
   };
