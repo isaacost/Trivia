@@ -12,10 +12,13 @@ class Game extends React.Component {
     answered: false,
     btnNext: false,
     index: 0,
+    isDisabled: false,
+    timer: 30,
   };
 
   componentDidMount() {
     this.fetchAPI();
+    this.cronometro();
   }
 
   respostasAPI = () => {
@@ -69,11 +72,33 @@ class Game extends React.Component {
     });
   };
 
+  cronometro = () => {
+    this.setState({ timer: 30 }, () => {
+      const second = 1000;
+      const idInterval = setInterval(() => {
+        this.setState((prev) => ({
+          timer: prev.timer - 1,
+          isDisabled: false,
+        }), () => {
+          const { timer } = this.state;
+          if (timer === 0) {
+            clearInterval(idInterval);
+            this.setState({
+              isDisabled: true,
+            });
+          }
+        });
+      }, second);
+    });
+  };
+
   render() {
-    const { responseAPI, correctAnswer, answers, answered, index, btnNext } = this.state;
+    const { responseAPI, timer,
+      correctAnswer, answers, answered, index, btnNext, isDisabled } = this.state;
     return (
       <div>
         <Header />
+        <p>{ timer }</p>
         {
           responseAPI.length > 0
           && (
@@ -89,6 +114,7 @@ class Game extends React.Component {
                           data-testid={ correctAnswer === element
                             ? 'correct-answer' : `wrong-answer-${i}` }
                           type="button"
+                          /*  disabled={ isDisabled } */
                           className={ correctAnswer === element
                             ? 'verde' : 'redText' }
                         >
@@ -103,6 +129,7 @@ class Game extends React.Component {
                           data-testid={ correctAnswer === element
                             ? 'correct-answer' : `wrong-answer-${i}` }
                           type="button"
+                          disabled={ isDisabled }
                           onClick={ this.handleClick }
                         >
                           {element}
