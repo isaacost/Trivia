@@ -1,9 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Header from '../components/Header';
+
+import { playAgain } from '../Redux/Action';
 
 class Feedback extends React.Component {
   handleClick = () => {
-    const { history } = this.props;
+    const { history, dispatch } = this.props;
+    // const score = 0;
+    dispatch(playAgain());
     history.push('/');
   };
 
@@ -15,6 +21,7 @@ class Feedback extends React.Component {
   render() {
     return (
       <>
+        <Header />
         <h1 data-testid="feedback-text">Feedback</h1>
         <button
           type="button"
@@ -40,4 +47,4 @@ Feedback.propTypes = {
   push: PropTypes.func,
 }.isRequired;
 
-export default Feedback;
+export default connect()(Feedback);

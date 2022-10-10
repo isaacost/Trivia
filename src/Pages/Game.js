@@ -16,7 +16,6 @@ class Game extends React.Component {
     index: 0,
     isDisabled: false,
     timer: 30,
-    score: 0,
     fimTimer: 0,
   };
 
@@ -56,29 +55,29 @@ class Game extends React.Component {
       answered: true,
       btnNext: true,
     });
-    const { responseAPI, index, timer, score } = this.state;
+    const { responseAPI, index, timer } = this.state;
     const { dispatch } = this.props;
     const questionDifficulty = responseAPI[index].difficulty;
     const rightAnswer = target.value;
     console.log(questionDifficulty);
+    let score = 0;
     const scoreNumber = 10;
     const scoreHard = 3;
     const scoreMedium = 2;
     const scoreEasy = 1;
     if (questionDifficulty === 'hard' && rightAnswer === 'correct') {
-      this.setState((prev) => ({
-        score: prev.score + scoreNumber + (timer * scoreHard),
-      }));
+      score = scoreNumber + (timer * scoreHard);
+      dispatch(addScore(score));
+      return score;
     } if (questionDifficulty === 'medium' && rightAnswer === 'correct') {
-      this.setState((prev) => ({
-        score: prev.score + scoreNumber + (timer * scoreMedium),
-      }));
+      score = scoreNumber + (timer * scoreMedium);
+      dispatch(addScore(score));
+      return score;
     } if (questionDifficulty === 'easy' && rightAnswer === 'correct') {
-      this.setState((prev) => ({
-        score: prev.score + scoreNumber + (timer * scoreEasy),
-      }));
+      score = scoreNumber + (timer * scoreEasy);
+      dispatch(addScore(score));
+      return score;
     }
-    dispatch(addScore(score));
   };
 
   clickNext = () => {
