@@ -1,4 +1,4 @@
-import { ADD_EMAIL, ADD_SCORE } from '../Action';
+import { ADD_EMAIL, ADD_SCORE, PLAY_AGAIN } from '../Action';
 
 const INITIAL_STATE = {
   name: '',
@@ -18,7 +18,12 @@ function player(state = INITIAL_STATE, action) {
   case ADD_SCORE:
     return {
       ...state,
-      score: action.payload,
+      score: state.score + action.payload,
+    };
+  case PLAY_AGAIN:
+    return {
+      ...state,
+      score: 0,
     };
   default:
     return state;
