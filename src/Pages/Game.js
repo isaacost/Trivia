@@ -17,6 +17,7 @@ class Game extends React.Component {
     isDisabled: false,
     timer: 30,
     score: 0,
+    fimTimer: 0,
   };
 
   componentDidMount() {
@@ -27,7 +28,6 @@ class Game extends React.Component {
   respostasAPI = () => {
     const number = 0.5;
     const { responseAPI, index } = this.state;
-    console.log(responseAPI);
     const correctAnswer = responseAPI[index].correct_answer;
     const incorrectAnswers = responseAPI[index].incorrect_answers;
     const answers = [correctAnswer, ...incorrectAnswers]
@@ -88,9 +88,9 @@ class Game extends React.Component {
     if (index === lengthIndex) {
       history.push('/feedback');
     }
-    this.setState((previousSate) => ({
-      index: previousSate.index + 1,
-    }));
+    this.setState((previousSate) => ({ index: previousSate.index + 1 }), () => {
+      this.cronometro();
+    });
     this.setState({
       answered: false,
       btnNext: false,
@@ -100,6 +100,10 @@ class Game extends React.Component {
   };
 
   cronometro = () => {
+    const { fimTimer } = this.state;
+    if (fimTimer) {
+      clearInterval(fimTimer);
+    }
     this.setState({ timer: 30 }, () => {
       const second = 1000;
       const idInterval = setInterval(() => {
@@ -116,6 +120,7 @@ class Game extends React.Component {
           }
         });
       }, second);
+      this.setState({ fimTimer: idInterval });
     });
   };
 
