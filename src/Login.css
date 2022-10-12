@@ -4,14 +4,8 @@ body {
   background-size: cover;
   height: 733px;
   left: 0;
-
-  /* background-attachment: fixed;
-  background-repeat: no-repeat;
-  height: 200px;
-  width: 400px; */
-
   position: fixed;
-  top: 0;
+    top: 0;
   width: 1280px;
 
 }

@@ -25,47 +25,38 @@ describe('testando a página de feedback', () => {
         expect(buttonPlayAgain).toBeInTheDocument();
         expect(text).toBeInTheDocument();
     });
-    // test('Verifica se o jogador acertou mais de 3 questões', async() => {
-    //    const { history } = renderWithRouterAndRedux(<App />);
+    test('Verifica se o jogador acertou mais de 3 questões', async() => {
+       renderWithRouterAndRedux(<App />, {}, '/game');
 
-    //     const buttonPlay = screen.getByTestId('btn-play');
-    //     const emailInput = screen.getByTestId('input-gravatar-email');
-    //     const nameInput = screen.getByTestId('input-player-name');
+        await waitFor(() => { expect(screen.getByTestId('answer-options')).toBeInTheDocument() }, {
+            timeout: 4500,
+        });
+            const respostaCerta = screen.getByTestId('correct-answer');
+            expect(respostaCerta).toBeInTheDocument();
 
-    //     userEvent.type(emailInput, 'teste@test.com');
-    //     userEvent.type(nameInput, 'Athanes');
-    //     userEvent.click(buttonPlay);
+            userEvent.click(respostaCerta);
 
-    //     await waitFor(() => { expect(history.location.pathname).toEqual('/game') })
+            const botaoNext = screen.getByTestId('btn-next');
+            expect(botaoNext).toBeInTheDocument();
 
-    //     await waitFor(() => {
-    //         const respostaCerta = screen.getByTestId('correct-answer');
-    //         expect(respostaCerta).toBeInTheDocument();
+            userEvent.click(botaoNext);
 
-    //         userEvent.click(respostaCerta);
+            userEvent.click(respostaCerta);
+            userEvent.click(botaoNext);
 
-    //         const botaoNext = screen.getByTestId('btn-next');
-    //         expect(botaoNext).toBeInTheDocument();
+            userEvent.click(respostaCerta);
+            userEvent.click(botaoNext);
 
-    //         userEvent.click(botaoNext);
+            userEvent.click(respostaCerta);
+            userEvent.click(botaoNext);
 
-    //         userEvent.click(respostaCerta);
-    //         userEvent.click(botaoNext);
+            userEvent.click(respostaCerta);
+            userEvent.click(botaoNext);
 
-    //         userEvent.click(respostaCerta);
-    //         userEvent.click(botaoNext);
+            const text = screen.getByText(/Well Done!/i);
+            expect(text).toBeInTheDocument();        
+    });
 
-    //         userEvent.click(respostaCerta);
-    //         userEvent.click(botaoNext);
-
-    //         userEvent.click(respostaCerta);
-    //         userEvent.click(botaoNext);
-
-    //         const text = screen.getByText(/Well Done!/i);
-    //         expect(text).toBeInTheDocument();
-    //     });
-        
-    // });
     test('testando se quando clicado botao play again leva para login', async () => {
         const { history } = renderWithRouterAndRedux(<App />, {}, '/feedback');
 

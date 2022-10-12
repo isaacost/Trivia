@@ -40,9 +40,10 @@ describe('testes da página de Login', () => {
         userEvent.type(nameInput, 'Athanes');
         userEvent.click(buttonPlay);
 
-        await waitFor(() => { expect(history.location.pathname).toBe('/game') });
-
-
+        await waitFor(() => { expect(history.location.pathname).toBe('/game') }, {
+            timeout: 3000,
+            onTimeout: () => { expect(history.location.pathname).toBe('/') },
+        });
     })
     it('verifica se a rota muda ao clicar no botão settings', () => {
         const { history } = renderWithRouterAndRedux(<App />);
