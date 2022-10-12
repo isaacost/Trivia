@@ -32,7 +32,12 @@ class Header extends React.Component {
           alt="imagem usuário"
         />
         <p className="nome-header" data-testid="header-player-name">{ name }</p>
-        <p className="score-header" data-testid="header-score">{ score }</p>
+        <p className="score-header">
+          Pontuação:
+          <span data-testid="header-score">
+            {score}
+          </span>
+        </p>
       </div>
     );
   }

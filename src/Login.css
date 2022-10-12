@@ -10,7 +10,7 @@ body {
   height: 200px;
   width: 400px; */
 
-  /* position: absolute; */
+  position: fixed;
   top: 0;
   width: 1280px;
 
