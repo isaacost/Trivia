@@ -1,7 +1,29 @@
 .verde {
   border: 3px solid rgb(6, 240, 15);
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: black;
+  font-size: 18px;
+  font-weight: 800;
+  height: 64px;
+  left: 661px;
+  margin-left: 750px;
+  margin-top: 100px;
+  top: 228px;
+  width: 519px;
 }
 
 .redText {
   border: 3px solid red;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: black;
+  font-size: 18px;
+  font-weight: 800;
+  height: 64px;
+  left: 661px;
+  margin-left: 750px;
+  margin-top: 100px;
+  top: 228px;
+  width: 519px;
 }

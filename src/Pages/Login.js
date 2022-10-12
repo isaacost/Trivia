@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { addEmail } from '../Redux/Action';
+import '../Login.css';
 
 class Login extends React.Component {
   state = {
@@ -47,33 +48,33 @@ class Login extends React.Component {
   render() {
     const { name, email, isBtnDisabled } = this.state;
     return (
-      <div>
+      <div className="div-login">
         <form>
-          <label htmlFor="name">
-            Usuário:
-            <input
-              type="text"
-              data-testid="input-player-name"
-              value={ name }
-              name="name"
-              id="name"
-              onChange={ this.handleChange }
-            />
-          </label>
 
-          <label htmlFor="email">
-            Email:
-            <input
-              type="text"
-              data-testid="input-gravatar-email"
-              value={ email }
-              name="email"
-              id="email"
-              onChange={ this.handleChange }
-            />
-          </label>
+          <input
+            placeholder=" Qual é o seu nome ?"
+            className="input-name"
+            type="text"
+            data-testid="input-player-name"
+            value={ name }
+            name="name"
+            id="name"
+            onChange={ this.handleChange }
+          />
+
+          <input
+            placeholder=" Qual é o seu e-mail do gravatar?"
+            className="input-email"
+            type="text"
+            data-testid="input-gravatar-email"
+            value={ email }
+            name="email"
+            id="email"
+            onChange={ this.handleChange }
+          />
 
           <button
+            className="button-play"
             type="button"
             data-testid="btn-play"
             onClick={ this.handleClick }
@@ -82,6 +83,7 @@ class Login extends React.Component {
             Play
           </button>
           <button
+            className="button-setting"
             type="button"
             data-testid="btn-settings"
             onClick={ this.clickManager }

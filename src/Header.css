@@ -1,0 +1,30 @@
+.div-header {
+
+  /*  border: solid #f4dd00 5px;
+  border-radius: 10px; */
+
+  /*  background: whitesmoke; */
+  display: flex;
+  height: 100px;
+  justify-content: space-around;
+  left: 0;
+  margin-bottom: 5px;
+
+  /* margin-left: 50px; */
+  margin-top: -10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.score-header {
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.nome-header {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}

@@ -1,0 +1,103 @@
+.cronometro {
+  align-items: center;
+  color: white;
+  display: flex;
+  font-family: Courier New , Courier , monospace;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  height: 38px;
+  left: 114px;
+  letter-spacing: 0.12em;
+  line-height: 150%;
+  position: absolute;
+  text-align: center;
+  top: 535px;
+  width: 413px;
+
+}
+
+.categoria {
+  background: darkslateblue;
+  border-radius: 100px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: white;
+  font-size: 20px;
+  font-weight: 800;
+  height: 45px;
+  left: 114px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  top: 275px;
+  width: 413px;
+}
+
+.questoes {
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.2);
+  color: black;
+  display: flex;
+  font-family: Courier New , Courier , monospace;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 800;
+  height: 138px;
+  left: 114px;
+  line-height: 150%;
+  margin-left: 14px;
+  position: absolute;
+  text-align: center;
+  top: 361px;
+  width: 413px;
+}
+
+.button-game {
+  background: whitesmoke;
+  border: 1px solid white;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: black;
+  font-size: 18px;
+  font-weight: 800;
+  height: 64px;
+  left: 661px;
+  margin-left: 750px;
+  margin-top: 100px;
+  top: 228px;
+  width: 519px;
+}
+
+.button-proximo {
+  background: #2fc18c;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  height: 45px;
+  left: 661px;
+  margin-left: 90px;
+  margin-top: 80px;
+  position: fixed;
+
+  /*  top: 575px; */
+  width: 519px;
+}
+
+/* .answer-options {
+   background: whitesmoke;
+  border: 1px solid white;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: black;
+  font-size: 18px;
+  font-weight: 800;
+  height: 64px;
+  left: 661px;
+  margin-left: 750px;
+
+  margin-top: 100px;
+  top: 228px;
+  width: 519px;
+
+} */

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 
+import '../Game.css';
 import './game.css';
 import { addScore } from '../Redux/Action';
 
@@ -131,20 +132,36 @@ class Game extends React.Component {
     const { responseAPI, timer,
       correctAnswer, answers, answered, index, btnNext, isDisabled } = this.state;
     return (
-      <div>
+      <div className="game-div">
         <Header />
-        <p>{ timer }</p>
+        <p className="cronometro">{ timer }</p>
         {
           responseAPI.length > 0
           && (
             <div>
-              <h3 data-testid="question-category">{responseAPI[index].category}</h3>
-              <p data-testid="question-text">{responseAPI[index].question}</p>
+              <h3
+                className="categoria"
+                data-testid="question-category"
+              >
+                {responseAPI[index].category}
+
+              </h3>
+              <p
+                className="questoes"
+                data-testid="question-text"
+              >
+                {responseAPI[index].question}
+
+              </p>
               {
                 (answered)
                   ? (answers
                     .map((element, i) => (
-                      <div key={ i } data-testid="answer-options">
+                      <div
+                        key={ i }
+                        data-testid="answer-options"
+                        className="answer-options"
+                      >
                         <button
                           data-testid={ correctAnswer === element
                             ? 'correct-answer' : `wrong-answer-${i}` }
@@ -159,8 +176,13 @@ class Game extends React.Component {
                     )))
                   : (answers
                     .map((element, i) => (
-                      <div key={ i } data-testid="answer-options">
+                      <div
+                        key={ i }
+                        data-testid="answer-options"
+                        className="answer-options"
+                      >
                         <button
+                          className="button-game"
                           data-testid={ correctAnswer === element
                             ? 'correct-answer' : `wrong-answer-${i}` }
                           type="button"
@@ -182,6 +204,7 @@ class Game extends React.Component {
           (btnNext)
           && (
             <button
+              className="button-proximo"
               type="button"
               data-testid="btn-next"
               onClick={ this.clickNext }
