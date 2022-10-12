@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import md5 from 'crypto-js/md5';
 import Header from '../components/Header';
+import '../Feedback.css';
 
 import { playAgain } from '../Redux/Action';
 
@@ -31,25 +32,36 @@ class Feedback extends React.Component {
     const { contador, score } = this.props;
     const numeroAnalise = 3;
     return (
-      <>
+      <div className="feedback-div">
         <Header />
-        <h1>Feedback</h1>
-        {(contador >= numeroAnalise)
-          ? (<p data-testid="feedback-text">Well Done!</p>)
-          : (<p data-testid="feedback-text">Could be better...</p>)}
-        <p>
-          Número de acertos:
-          <span data-testid="feedback-total-question">
-            { contador }
-          </span>
-        </p>
-        <p>
-          Pontuação:
-          <span data-testid="feedback-total-score">
-            { score }
-          </span>
-        </p>
+        <div className="frases-div">
+          {(contador >= numeroAnalise)
+            ? (<p data-testid="feedback-text">Well Done!</p>)
+            : (<p data-testid="feedback-text">Could be better...</p>)}
+        </div>
+        <div className="score-div">
+          <p className="frase-questoes-feedback">
+            Número de acertos:
+            <span
+              className="total-questoes-feedback"
+              data-testid="feedback-total-question"
+            >
+              { contador }
+            </span>
+          </p>
+          <p className="frase-score-feedback">
+            Pontuação:
+            <span
+              className="score-total-feedback"
+              data-testid="feedback-total-score"
+            >
+              { score }
+            </span>
+          </p>
+        </div>
+
         <button
+          className="button-play-feedback"
           type="button"
           data-testid="btn-play-again"
           onClick={ this.handleClick }
@@ -57,13 +69,15 @@ class Feedback extends React.Component {
           Play Again
         </button>
         <button
+          className="button-ranking"
           type="button"
           data-testid="btn-ranking"
           onClick={ this.handleClickRanking }
         >
           Ranking
         </button>
-      </>
+
+      </div>
     );
   }
 }
