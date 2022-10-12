@@ -29,7 +29,7 @@ describe('testando a página de feedback', () => {
        renderWithRouterAndRedux(<App />, {}, '/game');
 
         await waitFor(() => { expect(screen.getByTestId('answer-options')).toBeInTheDocument() }, {
-            timeout: 4500,
+            timeout: 4000,
         });
             const respostaCerta = screen.getByTestId('correct-answer');
             expect(respostaCerta).toBeInTheDocument();
