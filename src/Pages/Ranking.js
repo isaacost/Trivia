@@ -26,20 +26,35 @@ class Ranking extends React.Component {
     const rankingEmOrdem = ranking.sort((a, b) => b.score - a.score);
     return (
       <div className="ranking-div">
-        <h1
+
+        <span
           className="ranking-title-div"
           data-testid="ranking-title"
-        >
-          Ranking
-        </h1>
-        {rankingEmOrdem.map((e, i) => (
-          <div key={ i } className="ranking-pessoas">
-            <img src={ e.picture } alt={ e.name } />
-            <p className="nome-ranking" data-testid={ `player-name-${i}` }>{e.name}</p>
-            <p className="score-ranking" data-testid={ `player-score-${i}` }>{e.score}</p>
-          </div>
-        ))}
-        <div>
+        />
+
+        <div className="tags-ranking">
+          {rankingEmOrdem.map((e, i) => (
+            <div key={ i } className="ranking-pessoas">
+              <img src={ e.picture } alt={ e.name } />
+              <div>
+                <p
+                  className="nome-ranking"
+                  data-testid={ `player-name-${i}` }
+                >
+                  {e.name}
+
+                </p>
+                <p
+                  className="score-ranking"
+                  data-testid={ `player-score-${i}` }
+                >
+                  {e.score}
+
+                </p>
+              </div>
+            </div>
+          ))}
+
           <button
             className="ranking-botao"
             type="button"
@@ -48,6 +63,7 @@ class Ranking extends React.Component {
           >
             Voltar para Login
           </button>
+
         </div>
       </div>
     );

@@ -2,21 +2,45 @@
   background-color: aquamarine;
 } */
 
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.feedback-div-tela {
+  background: url('./imagens/3.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 .feedback-div {
-  background: white;
-  border-radius: 10px;
+  background: black;
+  border: solid #f4dd00 5px;
+
+  /* background: white; */
+  border-radius: 100px;
   box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.2);
   height: 278px;
-  margin-left: 47%;
+  margin-left: 46%;
   position: absolute;
   text-align: center;
-  top: 359px;
+  top: 280px;
   width: 439px;
 }
 
 .frases-div {
   align-items: center;
-  color: black;
+  color: #f4dd00;
 
   /* or 45px */
   display: flex;
@@ -38,7 +62,7 @@
 }
 
 .frase-score-feedback {
-  color: black;
+  color: #f4dd00;
 
   /* font-size: 20px; */
   font-style: italic;
@@ -46,7 +70,7 @@
 }
 
 .frase-questoes-feedback {
-  color: black;
+  color: #f4dd00;
 
   /*  font-size: 20px; */
   font-style: italic;
@@ -54,12 +78,12 @@
 }
 
 .total-questoes-feedback {
-  color: darkolivegreen;
+  color: white;
   font-weight: 700;
 }
 
 .score-total-feedback {
-  color: black;
+  color: white;
   font-weight: 700;
 }
 
@@ -87,23 +111,36 @@
 }
 
 .button-play-feedback {
-  background: #2fc18c;
-  border-radius: 5px;
+  background: #f4dd00;
+  border-radius: 100px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: black;
+  font-weight: 800;
   height: 45px;
   left: 647.5px;
   top: 622px;
-  width: 212.5px;
+  width: 200px;
+}
+
+.button-play-feedback:hover {
+  color: blue;
+  font-size: 20px;
 }
 
 .button-ranking {
-  background: #00d5e2;
-  border-radius: 5px;
+  background: #f4dd00;
+  border-radius: 100px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 800;
   height: 45px;
   left: 421px;
   margin-left: 10px;
   margin-top: 40px;
   top: 622px;
-  width: 212.5px;
+  width: 200px;
+}
+
+.button-ranking:hover {
+  color: blue;
+  font-size: 20px;
 }

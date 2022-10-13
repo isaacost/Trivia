@@ -1,27 +1,31 @@
 .verde {
+
+  /* background-color: green; */
   border: 3px solid rgb(6, 240, 15);
   border-radius: 100px;
   box-sizing: border-box;
   color: black;
   font-size: 18px;
   font-weight: 800;
-  height: 64px;
+  height: 60px;
   left: 661px;
-  margin-left: 750px;
-  margin-top: 10px;
-  width: 519px;
+  margin-left: 700px;
+  margin-top: 2px;
+  width: 350px;
 }
 
 .redText {
+
+  /* background-color: red; */
   border: 3px solid red;
   border-radius: 100px;
   box-sizing: border-box;
   color: black;
   font-size: 18px;
   font-weight: 800;
-  height: 64px;
+  height: 60px;
   left: 661px;
-  margin-left: 750px;
-  margin-top: 10px;
-  width: 519px;
+  margin-left: 700px;
+  margin-top: 2px;
+  width: 350px;
 }

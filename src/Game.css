@@ -1,3 +1,22 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+.game-div {
+  background: url('./imagens/game.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 .cronometro {
   align-items: center;
   color: white;
@@ -12,7 +31,7 @@
   line-height: 150%;
   position: absolute;
   text-align: center;
-  top: 535px;
+  top: 560px;
   width: 413px;
 
 }
@@ -25,12 +44,12 @@
   font-size: 20px;
   font-weight: 800;
   height: 45px;
-  left: 114px;
+  left: 106px;
   padding: 10px;
   position: absolute;
   text-align: center;
-  top: 275px;
-  width: 413px;
+  top: 345px;
+  width: 350px;
 }
 
 .questoes {
@@ -44,13 +63,13 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 800;
-  height: 138px;
-  left: 114px;
+  height: 150px;
+  left: 80px;
   line-height: 150%;
-  margin-left: 14px;
+  margin-left: 2px;
   position: absolute;
   text-align: center;
-  top: 361px;
+  top: 420px;
   width: 413px;
 }
 
@@ -62,29 +81,34 @@
   color: black;
   font-size: 18px;
   font-weight: 800;
-  height: 64px;
+  height: 60px;
   left: 661px;
-  margin-left: 750px;
-  margin-top: 10px;
-  width: 519px;
+  margin-left: 700px;
+  margin-top: 8px;
+  width: 350px;
+}
+
+.button-game:hover {
+  color: darkslateblue;
+  font-size: 20px;
 }
 
 .respostas {
-  margin-top: 370px;
+  margin-top: 276px;
 }
 
 .button-proximo {
   background: #2fc18c;
-  border-radius: 5px;
+  border-radius: 100px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   height: 45px;
   left: 661px;
-  margin-left: 90px;
+  margin-left: 44px;
   margin-top: 10px;
   position: fixed;
 
   /*  top: 575px; */
-  width: 519px;
+  width: 350px;
 }
 
 /* .answer-options {
