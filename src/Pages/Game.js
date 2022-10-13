@@ -5,7 +5,7 @@ import Header from '../components/Header';
 
 import '../Game.css';
 import './game.css';
-import { addScore } from '../Redux/Action';
+import { addScore } from '../redux/Action';
 
 class Game extends React.Component {
   state = {
@@ -134,7 +134,7 @@ class Game extends React.Component {
     return (
       <div className="game-div">
         <Header />
-        <p className="cronometro">{ timer }</p>
+        <p className="cronometro">{`Timer: ${timer}` }</p>
         {
           responseAPI.length > 0
           && (
@@ -153,50 +153,53 @@ class Game extends React.Component {
                 {responseAPI[index].question}
 
               </p>
-              {
-                (answered)
-                  ? (answers
-                    .map((element, i) => (
-                      <div
-                        key={ i }
-                        data-testid="answer-options"
-                        className="answer-options"
-                      >
-                        <button
-                          data-testid={ correctAnswer === element
-                            ? 'correct-answer' : `wrong-answer-${i}` }
-                          type="button"
-                          /*  disabled={ isDisabled } */
-                          className={ correctAnswer === element
-                            ? 'verde' : 'redText' }
+              <div
+                className="respostas"
+              >
+                {
+                  (answered)
+                    ? (answers
+                      .map((element, i) => (
+                        <div
+                          key={ i }
+                          data-testid="answer-options"
+                          className="answer-options"
                         >
-                          {element}
-                        </button>
-                      </div>
-                    )))
-                  : (answers
-                    .map((element, i) => (
-                      <div
-                        key={ i }
-                        data-testid="answer-options"
-                        className="answer-options"
-                      >
-                        <button
-                          className="button-game"
-                          data-testid={ correctAnswer === element
-                            ? 'correct-answer' : `wrong-answer-${i}` }
-                          type="button"
-                          disabled={ isDisabled }
-                          onClick={ this.handleClick }
-                          value={ correctAnswer === element
-                            ? 'correct' : `wrong-${i}` }
+                          <button
+                            data-testid={ correctAnswer === element
+                              ? 'correct-answer' : `wrong-answer-${i}` }
+                            type="button"
+                            /*  disabled={ isDisabled } */
+                            className={ correctAnswer === element
+                              ? 'verde' : 'redText' }
+                          >
+                            {element}
+                          </button>
+                        </div>
+                      )))
+                    : (answers
+                      .map((element, i) => (
+                        <div
+                          key={ i }
+                          data-testid="answer-options"
+                          className="answer-options"
                         >
-                          {element}
-                        </button>
-                      </div>
-                    )))
-
-              }
+                          <button
+                            className="button-game"
+                            data-testid={ correctAnswer === element
+                              ? 'correct-answer' : `wrong-answer-${i}` }
+                            type="button"
+                            disabled={ isDisabled }
+                            onClick={ this.handleClick }
+                            value={ correctAnswer === element
+                              ? 'correct' : `wrong-${i}` }
+                          >
+                            {element}
+                          </button>
+                        </div>
+                      )))
+                }
+              </div>
             </div>
           )
         }

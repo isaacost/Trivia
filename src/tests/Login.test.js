@@ -5,9 +5,9 @@ import App from '../App';
 describe('testes da página de Login', () => {
     it('verifica renderização os campos de email e nome', () => {
         renderWithRouterAndRedux(<App />)
-        const emailInput = screen.getByRole('textbox', { name: /email:/i });
+        const emailInput = screen.getByTestId('input-gravatar-email');
         expect(emailInput).toBeInTheDocument();
-        const nameInput = screen.getByRole('textbox', { name: /usuário:/i });
+        const nameInput = screen.getByTestId('input-player-name');
         expect(nameInput).toBeInTheDocument();
     })
     it('verifica se botões são renderizados na tela', () => {
@@ -21,8 +21,8 @@ describe('testes da página de Login', () => {
         renderWithRouterAndRedux(<App />)
         const buttonPlay = screen.getByRole('button', { name: /play/i });
         expect(buttonPlay).toBeDisabled();
-        const emailInput = screen.getByRole('textbox', { name: /email:/i });
-        const nameInput = screen.getByRole('textbox', { name: /usuário:/i });
+        const emailInput = screen.getByTestId('input-gravatar-email');
+        const nameInput = screen.getByTestId('input-player-name');
         userEvent.type(emailInput, 'teste@test.com');
         userEvent.type(nameInput, 'Athanes');
         expect(emailInput).toHaveValue('teste@test.com');
@@ -33,15 +33,17 @@ describe('testes da página de Login', () => {
         const { history } = renderWithRouterAndRedux(<App />);
 
         const buttonPlay = screen.getByTestId('btn-play');
-        const emailInput = screen.getByRole('textbox', { name: /email:/i });
-        const nameInput = screen.getByRole('textbox', { name: /usuário:/i });
+        const emailInput = screen.getByTestId('input-gravatar-email');
+        const nameInput = screen.getByTestId('input-player-name');
 
         userEvent.type(emailInput, 'teste@test.com');
         userEvent.type(nameInput, 'Athanes');
         userEvent.click(buttonPlay);
 
-        await waitFor(() => {expect(history.location.pathname).toBe('/game')})
-
+        await waitFor(() => { expect(history.location.pathname).toBe('/game') }, {
+            timeout: 3000,
+            onTimeout: () => { expect(history.location.pathname).toBe('/') },
+        });
     })
     it('verifica se a rota muda ao clicar no botão settings', () => {
         const { history } = renderWithRouterAndRedux(<App />);

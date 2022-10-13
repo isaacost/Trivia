@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { playAgain } from '../Redux/Action';
+import { playAgain } from '../redux/Action';
 import '../Ranking.css';
 
 class Ranking extends React.Component {

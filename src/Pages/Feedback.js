@@ -5,7 +5,7 @@ import md5 from 'crypto-js/md5';
 import Header from '../components/Header';
 import '../Feedback.css';
 
-import { playAgain } from '../Redux/Action';
+import { playAgain } from '../redux/Action';
 
 class Feedback extends React.Component {
   handleClick = () => {
