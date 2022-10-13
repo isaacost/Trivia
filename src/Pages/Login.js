@@ -48,50 +48,52 @@ class Login extends React.Component {
   render() {
     const { name, email, isBtnDisabled } = this.state;
     return (
-      <div className="div-login">
-        <form>
+      <div className="div-tela-login">
+        <div className="div-login">
+          <form>
 
-          <input
-            placeholder=" Qual é o seu nome ?"
-            className="input-name"
-            type="text"
-            data-testid="input-player-name"
-            value={ name }
-            name="name"
-            id="name"
-            onChange={ this.handleChange }
-          />
+            <input
+              placeholder=" Qual é o seu nome ?"
+              className="input-name"
+              type="text"
+              data-testid="input-player-name"
+              value={ name }
+              name="name"
+              id="name"
+              onChange={ this.handleChange }
+            />
 
-          <input
-            placeholder=" Qual é o seu e-mail do gravatar?"
-            className="input-email"
-            type="text"
-            data-testid="input-gravatar-email"
-            value={ email }
-            name="email"
-            id="email"
-            onChange={ this.handleChange }
-          />
+            <input
+              placeholder=" Qual é o seu e-mail do gravatar?"
+              className="input-email"
+              type="text"
+              data-testid="input-gravatar-email"
+              value={ email }
+              name="email"
+              id="email"
+              onChange={ this.handleChange }
+            />
 
-          <button
-            className="button-play"
-            type="button"
-            data-testid="btn-play"
-            onClick={ this.handleClick }
-            disabled={ isBtnDisabled }
-          >
-            Play
-          </button>
-          <button
-            className="button-setting"
-            type="button"
-            data-testid="btn-settings"
-            onClick={ this.clickManager }
-          >
-            Configurações
+            <button
+              className="button-play"
+              type="button"
+              data-testid="btn-play"
+              onClick={ this.handleClick }
+              disabled={ isBtnDisabled }
+            >
+              Play
+            </button>
+            <button
+              className="button-setting"
+              type="button"
+              data-testid="btn-settings"
+              onClick={ this.clickManager }
+            >
+              Configurações
 
-          </button>
-        </form>
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

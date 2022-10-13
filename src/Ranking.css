@@ -1,39 +1,42 @@
-.ranking-title-div {
-  color: white;
-  margin-left: 140px;
-
-  /*  background: white;
-  border-radius: 10px;
-  box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.2);
-  height: 488px;
-  left: 396px;
-  position: absolute; */
-  text-align: center;
-
-  /* top: 148px;
-  width: 489px; */
+html {
+  height: 100%;
+  width: 100%;
 }
 
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.ranking-div {
+  background: url('./imagens/6.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+
 .ranking-pessoas {
-  background-color: white;
-  border: 5px solid white;
-  border-radius: 10px;
   color: white;
   display: flex;
+  flex: wrap;
   justify-content: center;
   margin-left: 550px;
-  margin-top: 10px;
+  margin-top: 8px;
   padding: 10px;
   width: 25%;
 }
 
 .nome-ranking {
-  align-items: center;
 
   /* background-color: white;
   border: solid 1px yellow;
   border-radius: 10px; */
-  color: black;
+  color: white;
 
   /* color: white; */
   display: flex;
@@ -44,6 +47,9 @@
   height: 24px;
   left: 507px;
   line-height: 150%;
+  margin-left: 50%;
+  margin-top: 20px;
+  text-align: center;
 
   /* position: absolute; */
   top: 354px;
@@ -51,12 +57,11 @@
 }
 
 .score-ranking {
-  align-items: center;
 
   /* background-color: white;
   border: solid 1px yellow;
   border-radius: 10px; */
-  color: black;
+  color: white;
 
   /* color: white; */
   display: flex;
@@ -68,24 +73,38 @@
   left: 702.42px;
   letter-spacing: 0.12em;
   line-height: 150%;
+  margin-left: 50%;
+  margin-top: 20px;
+  text-align: center;
   top: 354px;
   width: 101px;
 
 }
 
 .ranking-botao {
-  background: #2fc18c;
-  border-radius: 5px;
+  background: #f4dd00;
+  border-radius: 100px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 800;
   height: 45px;
   left: 447px;
   margin-left: 100px;
   position: absolute;
   top: 700px;
-  width: 386px;
+  width: 350px;
 }
 
-/* .ranking-div {
-  border: 5px solid yellow;
+.tags-ranking {
+
+  /*  border: 5px solid yellow; */
+  display: flex;
+  flex: wrap;
+  flex-direction: column;
+  height: 500px;
+  width: 800px;
 }
- */
+
+
+.ranking-botao:hover {
+  font-size: 20px;
+}
