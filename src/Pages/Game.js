@@ -2,10 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
-
+import audio from '../imagens/audio.mp3';
 import '../Game.css';
 import './game.css';
 import { addScore } from '../redux/Action';
+
+const audioLogin = new Audio(audio);
+audioLogin.play();
 
 class Game extends React.Component {
   state = {
@@ -23,6 +26,14 @@ class Game extends React.Component {
   componentDidMount() {
     this.fetchAPI();
     this.cronometro();
+    audioLogin.play();
+  }
+
+  componentWillUnmount() {
+    if (audioLogin.currentTime > 0) {
+      audioLogin.pause();
+      audioLogin.currentTime = 0;
+    }
   }
 
   respostasAPI = () => {
